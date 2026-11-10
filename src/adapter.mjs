@@ -257,16 +257,22 @@ export class GoodnotesAdapter {
       }),
     );
   }
+  async waitForLibraryRows(page) {
+    // A hidden stale list can precede the active list during navigation.
+    // Wait only for visible rows (or the genuine empty state), without sending
+    // another navigation or document mutation while the library loads.
+    await page
+      .locator('[data-document-id]:visible,#library-no-documents-view-new-button:visible')
+      .first()
+      .waitFor({ state: 'visible', timeout: 45000 });
+  }
   async enterItem(page, id, folder = false) {
     if (!UUID.test(id))
       throw new GoodnotesError('INVALID_ID', 'Use an item ID returned by goodnotes_list.');
     const item = page.locator(`[data-document-id="${id}"]`);
     // A fresh folder can briefly expose no rows, or a previous virtualized window.
     // Wait for a real list, then repeat only its read/scroll discovery if needed.
-    await page
-      .locator('[data-document-id],#library-no-documents-view-new-button')
-      .first()
-      .waitFor({ state: 'visible', timeout: 15000 });
+    await this.waitForLibraryRows(page);
     for (let attempt = 0; attempt < 3 && (await item.count()) === 0; attempt++) {
       await collectScrollList(page, {
         selector: '[data-document-id]',
@@ -314,10 +320,7 @@ export class GoodnotesAdapter {
         previousIds,
         { timeout: 15000 },
       );
-      await page
-        .locator('[data-document-id],#library-no-documents-view-new-button')
-        .first()
-        .waitFor({ state: 'visible', timeout: 15000 });
+      await this.waitForLibraryRows(page);
       await page.waitForLoadState('networkidle', { timeout: 3000 }).catch(() => {});
       await page.waitForTimeout(250);
     }
@@ -344,10 +347,7 @@ export class GoodnotesAdapter {
         old,
         { timeout: 15000 },
       );
-    await page
-      .locator('[data-document-id],#library-no-documents-view-new-button')
-      .first()
-      .waitFor({ state: 'visible', timeout: 15000 });
+    await this.waitForLibraryRows(page);
     await page.waitForTimeout(200);
   }
   async openItem({ itemPath }) {

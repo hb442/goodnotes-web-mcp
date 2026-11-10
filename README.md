@@ -46,6 +46,8 @@ This is an unofficial project, not affiliated with Goodnotes. It depends on the 
 
 Requires Node.js 22.13 or later, npm, installed Google Chrome (or Microsoft Edge), and a Goodnotes account with access to its Web documents. Windows is the development platform; macOS/Linux have not been tested live.
 
+Download and extract the source archive from [Releases](https://github.com/hb442/goodnotes-web-mcp/releases), or clone this repository. Open a terminal in the extracted/cloned project directory, then run:
+
 ```sh
 npm ci --ignore-scripts
 npm run browser:install

@@ -39,6 +39,7 @@ test('opening an item rescans a late-loading virtualized folder before declaring
     }, 300);
   });
   const adapter = {
+    waitForLibraryRows: GoodnotesAdapter.prototype.waitForLibraryRows,
     readLibraryCards: (page) => GoodnotesAdapter.prototype.readLibraryCards.call({}, page),
   };
   await GoodnotesAdapter.prototype.enterItem.call(adapter, page, id(40));
@@ -54,9 +55,16 @@ test('ambiguous native library IDs never dispatch an open', async (t) => {
     window.clicks = 0;
     document.ondblclick = () => window.clicks++;
   });
-  await assert.rejects(GoodnotesAdapter.prototype.enterItem.call({}, page, id(1)), {
-    code: 'ITEM_NOT_FOUND',
-  });
+  await assert.rejects(
+    GoodnotesAdapter.prototype.enterItem.call(
+      { waitForLibraryRows: GoodnotesAdapter.prototype.waitForLibraryRows },
+      page,
+      id(1),
+    ),
+    {
+      code: 'ITEM_NOT_FOUND',
+    },
+  );
   assert.equal(await page.evaluate(() => window.clicks), 0);
 });
 test('a row remounted after readiness is awaited again instead of reported as a duplicate', async (t) => {
@@ -93,6 +101,42 @@ test('a row remounted after readiness is awaited again instead of reported as a 
         });
       },
     };
-  await GoodnotesAdapter.prototype.enterItem.call({}, wrapped, id(1));
+  await GoodnotesAdapter.prototype.enterItem.call(
+    { waitForLibraryRows: GoodnotesAdapter.prototype.waitForLibraryRows },
+    wrapped,
+    id(1),
+  );
   assert.equal(await page.evaluate(() => window.clicks), 1);
 });
+test(
+  'a hidden stale library row does not hide a ready active list',
+  { timeout: 15000 },
+  async (t) => {
+    const page = await browser.newPage();
+    t.after(() => page.close());
+    await page.setContent(
+      `<div data-document-id="${id(1)}" hidden>Stale</div><div data-document-id="${id(2)}">Current</div>`,
+    );
+    await GoodnotesAdapter.prototype.waitForLibraryRows.call({}, page);
+  },
+);
+test(
+  'library readiness also accepts a delayed genuine empty state',
+  { timeout: 15000 },
+  async (t) => {
+    const page = await browser.newPage();
+    t.after(() => page.close());
+    await page.setContent(`<div data-document-id="${id(1)}" hidden>Stale</div>`);
+    await page.evaluate(() =>
+      setTimeout(
+        () =>
+          document.body.insertAdjacentHTML(
+            'beforeend',
+            '<button id="library-no-documents-view-new-button">New</button>',
+          ),
+        200,
+      ),
+    );
+    await GoodnotesAdapter.prototype.waitForLibraryRows.call({}, page);
+  },
+);

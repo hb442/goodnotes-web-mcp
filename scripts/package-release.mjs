@@ -11,7 +11,6 @@ const entries = [
   'docs',
   'examples',
   'test',
-  '.github',
   'README.md',
   'LICENSE',
   'SECURITY.md',

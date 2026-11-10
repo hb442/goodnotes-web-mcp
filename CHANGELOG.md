@@ -7,6 +7,7 @@
 - Add verified-copy adoption of explicitly selected native text boxes and images from older boards, including exact text/style/image/crop evidence and whole-copy preservation checks.
 - Add automatic measured splitting of supplied study materials into linked parts and an overview, with durable frozen child workflows and verified native text links.
 - Support horizontal positioning and bounded previews for adopted boards. Keep original image crops and native box styles during selective updates.
+- Stage wide images fully inside the viewport before enlargement; use bounded measured drag corrections and reacquire the committed frame before validating placement.
 - Expose nine additional actions (107 total); compact mode still uses three entry tools.
 - See VALIDATION.md for measured live evidence and LIMITATIONS.md for unsupported features. This remains an unofficial experimental adapter.
 

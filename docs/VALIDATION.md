@@ -14,6 +14,12 @@ The revision took **4:24** from preparation through completion, or **4:34** incl
 
 An earlier development copy stopped before moving an image because its normalized first row placed its top at 128 px, while native moves require at least 130 px clearance. Adopted boards now position that row at 148 px. The rejected/no-write receipt was preserved, a regression test covers the camera boundary, and the successful measurement above used a new copy rather than repairing the failed run.
 
+### Collection development failures
+
+Earlier collection attempts stopped at the wide-image layout guard: a centered small import could grow beyond the viewport; after staging was fixed, short native corrections sometimes left the committed frame outside the existing 12 px size tolerance. The final writer stages both sizes inside the viewport, measures the active drag, and reacquires the committed selection for at most three bounded corrections. It does not re-import an image, replay uncertain operations or loosen the layout, pixel/crop or persistence checks. A fresh isolated wide-image pilot passed all checks after reload.
+
+Another complete-run attempt stopped after creating an overview because the subsequent library read did not expose a visible row within 15 seconds. Its uncertain receipt was retained; that creation was not repeated. Library readiness now excludes hidden stale rows and allows a bounded 45-second read-only wait. Regression fixtures cover a hidden stale list and a delayed empty-library state. These interrupted attempts are development findings, not successful timing measurements.
+
 ### Automated checks
 
 138 core/protocol tests and 62 Chromium fixture tests passed (200 total). New cases cover lossless partitioning of supplied card/figure groups, exact native link destinations, crop preservation, foreign-copy rejection, bounded adoption finalization, full-copy conflict refusal, first-row toolbar clearance, safe image staging before enlargement, saved preparation status, immutable child installation and uncertain-creation crash recovery. Fixtures use synthetic material; copied-lecture observations are separately described above. The production dependency audit reported zero known vulnerabilities at validation time; this is not a comprehensive security certification.
