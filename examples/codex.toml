@@ -1,0 +1,7 @@
+# Replace this with the absolute path on your computer.
+# Reference: https://learn.chatgpt.com/docs/extend/mcp
+[mcp_servers.goodnotes-web]
+command = "node"
+args = ["C:/path/to/goodnotes-web-mcp/src/server.mjs"]
+startup_timeout_sec = 20
+tool_timeout_sec = 240

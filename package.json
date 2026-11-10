@@ -1,0 +1,45 @@
+{
+  "name": "goodnotes-web-mcp",
+  "version": "0.21.0",
+  "description": "Local MCP tools for deliberate, verified edits in Goodnotes Web.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hb442/goodnotes-web-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hb442/goodnotes-web-mcp/issues"
+  },
+  "homepage": "https://github.com/hb442/goodnotes-web-mcp#readme",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "login": "node src/cli.mjs login",
+    "doctor": "node src/cli.mjs doctor",
+    "test": "node --test test/*.test.mjs",
+    "test:integration": "node --test test/integration/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "format": "prettier --write src scripts test package.json .prettierrc.json",
+    "format:check": "prettier --check src scripts test package.json .prettierrc.json",
+    "browser:install": "playwright install chromium",
+    "package:release": "node scripts/package-release.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@napi-rs/canvas": "1.1.0",
+    "@tesseract.js-data/deu": "1.0.0",
+    "@tesseract.js-data/eng": "1.0.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.5.438",
+    "playwright": "1.65.0",
+    "tesseract.js": "7.0.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

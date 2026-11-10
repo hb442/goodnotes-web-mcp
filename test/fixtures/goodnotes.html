@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><title>Fixture Board</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+    header {
+      height: 48px;
+      background: #294e7c;
+      color: white;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    button {
+      padding: 8px;
+    }
+    #paging-view-content {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 48px);
+      background: #f7fafc;
+    }
+    .ql-editor {
+      position: absolute;
+      left: 35%;
+      top: 35%;
+      min-width: 300px;
+      min-height: 90px;
+      background: white;
+      border: 2px solid blue;
+      padding: 10px;
+      z-index: 3;
+    }
+    .ql-editor p {
+      margin: 0;
+    }
+    .note {
+      position: absolute;
+      left: 35%;
+      top: 35%;
+      white-space: pre-wrap;
+      padding: 10px;
+      pointer-events: none;
+    }
+  </style>
+  <header>
+    <button id="infoButton">Fixture Board</button>
+    <div id="editorTopbarTools">
+      <button id="textToolButton" data-is-selected="false">Text</button
+      ><button id="lassoToolButton">Lasso</button>
+    </div>
+    <button id="changeEditMode">Edit mode</button><button id="zoomLevelContainer">100%</button>
+  </header>
+  <canvas id="paging-view-content"></canvas>
+  <div
+    id="interaction-layer-page-00000000-0000-4000-8000-000000000001"
+    style="
+      position: absolute;
+      left: 0;
+      top: 48px;
+      width: 100vw;
+      height: calc(100vh - 48px);
+      pointer-events: none;
+    "
+  ></div>
+  <div class="note"></div>
+  <button style="position: fixed; top: 120vh">Continue in browser</button>
+  <button id="textToolbarTextStyles" style="position: fixed; top: 70px; right: 20px; z-index: 5">
+    Format
+  </button>
+  <div
+    id="fixture-format-menu"
+    style="display: none; position: fixed; top: 110px; right: 20px; z-index: 5"
+  >
+    <button id="shared_menu_floating_toggle_bold">Bold</button>
+    <button id="shared_menu_floating_toggle_Italic">Italic</button>
+    <button id="shared_menu_floating_toggle_underline">Underline</button>
+  </div>
+  <script>
+    const formatMenu = document.getElementById('fixture-format-menu');
+    document.getElementById('textToolbarTextStyles').onmousedown = (e) => e.preventDefault();
+    document.getElementById('textToolbarTextStyles').onclick = () => {
+      formatMenu.style.display = 'block';
+    };
+    for (const [id, command] of [
+      ['bold', 'bold'],
+      ['Italic', 'italic'],
+      ['underline', 'underline'],
+    ]) {
+      const button = document.getElementById('shared_menu_floating_toggle_' + id);
+      button.onmousedown = (e) => e.preventDefault();
+      button.onclick = () => document.execCommand(command);
+    }
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        if (e.clientX < 10 && e.clientY > innerHeight - 10) {
+          e.preventDefault();
+          formatMenu.style.display = 'none';
+        }
+      },
+      true,
+    );
+    const key = 'fixture-note';
+    const initial = 'Original note';
+    const canvas = document.getElementById('paging-view-content');
+    let saved = localStorage.getItem(key) ?? initial;
+    document.querySelector('.note').textContent = saved;
+    const textButton = document.getElementById('textToolButton');
+    const lassoButton = document.getElementById('lassoToolButton');
+    textButton.onclick = (e) => e.currentTarget.setAttribute('data-is-selected', 'true');
+    function commitEditor() {
+      const editor = document.querySelector('.ql-editor');
+      if (!editor) return;
+      if (editor.dataset.decoy === 'true') {
+        editor.remove();
+        return;
+      }
+      saved = Array.from(editor.children)
+        .map((p) => p.textContent)
+        .join('\n');
+      if (!localStorage.getItem('drop-save')) {
+        localStorage.setItem(key, saved);
+        localStorage.setItem(
+          'fixture-rich',
+          JSON.stringify({ text: saved, html: editor.innerHTML }),
+        );
+      }
+      document.querySelector('.note').textContent = saved;
+      editor.remove();
+    }
+    lassoButton.onclick = () => {
+      commitEditor();
+      textButton.setAttribute('data-is-selected', 'false');
+    };
+    function setReadingMode(reading) {
+      document.getElementById('editorTopbarTools').style.display = reading ? 'none' : 'block';
+    }
+    document.getElementById('changeEditMode').onclick = () => {
+      if (localStorage.getItem('native-sticky') || localStorage.getItem('native-shape'))
+        commitEditor();
+      setReadingMode(document.getElementById('editorTopbarTools').style.display !== 'none');
+    };
+    function openEditor(native = false) {
+      if (document.querySelector('.ql-editor')) return;
+      for (const id of [
+        'shared_menu_options_collapse',
+        'shared_menu_options_edit_shape',
+        'object_menu_context_menu_option',
+        'object_menu_context_shared_menu_options_edit_text',
+      ])
+        document.getElementById(id)?.remove();
+      const editor = document.createElement('div');
+      editor.className = 'ql-editor';
+      editor.contentEditable = 'true';
+      const decoy =
+        !!(localStorage.getItem('native-sticky') || localStorage.getItem('native-shape')) &&
+        !native;
+      editor.dataset.decoy = String(decoy);
+      for (const line of (decoy ? '' : saved).split('\n')) {
+        const p = document.createElement('p');
+        p.textContent = line;
+        if (!line) p.append(document.createElement('br'));
+        editor.append(p);
+      }
+      const rich = JSON.parse(localStorage.getItem('fixture-rich') || 'null');
+      if (!decoy && rich?.text === saved) editor.innerHTML = rich.html;
+      editor.onkeydown = (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          if (
+            (localStorage.getItem('native-sticky') || localStorage.getItem('native-shape')) &&
+            !decoy
+          )
+            editor.remove();
+          else commitEditor();
+          setReadingMode(true);
+        }
+      };
+      document.body.append(editor);
+      editor.focus();
+    }
+    canvas.onclick = (event) => {
+      if (
+        (localStorage.getItem('native-sticky') || localStorage.getItem('native-shape')) &&
+        document.querySelector('.ql-editor')
+      ) {
+        const r = document.querySelector('.ql-editor').getBoundingClientRect();
+        if (
+          event.clientX < r.left ||
+          event.clientX > r.right ||
+          event.clientY < r.top ||
+          event.clientY > r.bottom
+        ) {
+          commitEditor();
+          return;
+        }
+      }
+      if (
+        (localStorage.getItem('native-sticky') || localStorage.getItem('native-shape')) &&
+        textButton.getAttribute('data-is-selected') !== 'true'
+      ) {
+        const nativeId = localStorage.getItem('native-shape')
+          ? 'shared_menu_options_edit_shape'
+          : 'shared_menu_options_collapse';
+        if (!document.getElementById(nativeId)) {
+          const menu = document.createElement('button');
+          menu.id = nativeId;
+          menu.textContent = 'Collapse';
+          menu.style = 'position:fixed;left:20px;top:110px;z-index:5';
+          document.body.append(menu);
+          const more = document.createElement('button');
+          more.id = 'object_menu_context_menu_option';
+          more.textContent = 'More';
+          more.style = 'position:fixed;left:120px;top:110px;z-index:5';
+          document.body.append(more);
+          more.onclick = () => {
+            const edit = document.createElement('button');
+            edit.id = 'object_menu_context_shared_menu_options_edit_text';
+            edit.textContent = 'Edit Text';
+            edit.style = 'position:fixed;left:200px;top:110px;z-index:5';
+            edit.onclick = () => openEditor(true);
+            document.body.append(edit);
+          };
+        }
+      } else openEditor();
+    };
+    canvas.ondblclick = () =>
+      openEditor(
+        !!(localStorage.getItem('native-sticky') || localStorage.getItem('native-shape')) &&
+          textButton.getAttribute('data-is-selected') !== 'true',
+      );
+  </script>
+</html>

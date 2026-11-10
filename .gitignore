@@ -1,0 +1,17 @@
+node_modules/
+.local/
+dist/
+coverage/
+test-results/
+playwright-report/
+.env
+.env.*
+*.log
+*.tgz
+*.zip
+*.goodnotes
+*.pdf
+*.png
+*.jpg
+auth.json
+storage-state.json

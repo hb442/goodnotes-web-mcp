@@ -1,0 +1,8 @@
+{
+  "url": "https://web.goodnotes.com/s/YOUR_DOCUMENT_ID",
+  "x": 0.4,
+  "y": 0.4,
+  "expectedText": "Synthetic original text",
+  "replacementText": "Synthetic replacement\nSecond line",
+  "operationId": "live-test-20261109-001"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Market structure",
+  "subtitle": "Read the original figure, explain the idea, then test yourself.",
+  "sections": ["Concept", "Practice"],
+  "layout": { "columns": 2, "flow": "compact", "imageMaxHeight": 450 },
+  "cards": [
+    { "key": "summary", "section": "Concept", "role": "summary", "heading": "Key idea", "body": "Replace this example with a summary grounded in your source.", "pages": [1] },
+    { "key": "questions", "section": "Practice", "role": "questions", "heading": "Try without looking", "body": "Explain the axes and the intersection in the original diagram.", "pages": [1] },
+    { "key": "answers", "section": "Practice", "role": "answers", "heading": "Check your reasoning", "body": "Supply a source-checked answer and distinguish it from an official answer key.", "pages": [1] }
+  ],
+  "figures": [
+    { "key": "original", "section": "Concept", "page": 1, "caption": "Replace with an accurate caption and an original figure crop from the source." }
+  ]
+}

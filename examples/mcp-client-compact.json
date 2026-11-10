@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "goodnotes-web": {
+      "command": "node",
+      "args": ["C:/path/to/goodnotes-web-mcp/src/server.mjs"],
+      "env": { "GOODNOTES_MCP_MODE": "compact" }
+    }
+  }
+}
