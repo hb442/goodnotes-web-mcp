@@ -18,9 +18,30 @@ import {
   verifyStudyLinks,
   studyImageStaging,
   resizeStudyImage,
+  validateStudyImageBounds,
 } from '../src/study-native.mjs';
 import { createCanvas } from '@napi-rs/canvas';
 const source = { exportId: crypto.randomUUID(), sha256: 'source', pageCount: 50, title: 'Lecture' };
+test('image placement accepts the reserved slot, rejects undersizing, overflow and displacement', () => {
+  const target = { x: 235.04531722054378, y: 148, width: 929.9093655589124, height: 450 };
+  for (const actual of [
+    { x: 244, y: 147, width: 926, height: 449 },
+    { x: 244, y: 147, width: 901, height: 437 },
+  ])
+    assert.doesNotThrow(() => validateStudyImageBounds(actual, target, true));
+  for (const actual of [
+    { x: 244, y: 147, width: 890, height: 430 },
+    { x: 244, y: 147, width: 950, height: 460 },
+    { x: 285, y: 148, width: 926, height: 449 },
+  ])
+    assert.throws(() => validateStudyImageBounds(actual, target, true), {
+      code: 'IMAGE_LAYOUT_MISMATCH',
+    });
+  assert.throws(
+    () => validateStudyImageBounds({ x: 244, y: 147, width: 926, height: 390 }, target, true),
+    { code: 'IMAGE_FRAME_MISMATCH' },
+  );
+});
 test('image sizing crosses native drag threshold and corrects measured frame before release', async () => {
   let frame = { x: 240, y: 148, width: 926, height: 448 };
   let held = false,

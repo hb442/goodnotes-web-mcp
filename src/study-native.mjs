@@ -13,6 +13,20 @@ import { captureBoardViewport, restoreBoardViewport } from './viewport.mjs';
 import { worldBox, screenBox } from './board-scan.mjs';
 import { waitForMappedRegion, nearBounds, pixels } from './visual.mjs';
 
+export function studyImageSizeFits(bounds, expected) {
+  const fit = Math.min(
+    (expected.width - 8) / expected.width,
+    (expected.height - 8) / expected.height,
+  );
+  // The eight-pixel inset is a resize target, not an extra forbidden strip
+  // inside the reserved slot. Compare integer raster bounds against the whole
+  // slot; retain the lower size limit and only two pixels of upper rounding.
+  return ['width', 'height'].every(
+    (axis) =>
+      bounds[axis] >= Math.floor(expected[axis] * fit - 12) &&
+      bounds[axis] <= Math.ceil(expected[axis]) + 2,
+  );
+}
 export function validateStudyImageBounds(bounds, expected, placed = false) {
   const aspect = expected.width / expected.height;
   if (Math.abs(bounds.width / bounds.height / aspect - 1) > 0.035)
@@ -21,13 +35,8 @@ export function validateStudyImageBounds(bounds, expected, placed = false) {
       'The selected frame does not match the original figure aspect ratio.',
     );
   if (placed) {
-    const fit = Math.min(
-      (expected.width - 8) / expected.width,
-      (expected.height - 8) / expected.height,
-    );
     if (
-      Math.abs(bounds.width - expected.width * fit) > 12 ||
-      Math.abs(bounds.height - expected.height * fit) > 12 ||
+      !studyImageSizeFits(bounds, expected) ||
       Math.abs(bounds.x + bounds.width / 2 - expected.x - expected.width / 2) > 18 ||
       Math.abs(bounds.y + bounds.height / 2 - expected.y - expected.height / 2) > 18
     )
@@ -380,12 +389,7 @@ export class StudyNativeController {
               block,
             );
             selected = await this.imageSelection(page, view, resized, block);
-            const fit = Math.min((rect.width - 8) / rect.width, (rect.height - 8) / rect.height);
-            if (
-              Math.abs(selected.bounds.width - rect.width * fit) <= 12 &&
-              Math.abs(selected.bounds.height - rect.height * fit) <= 12
-            )
-              break;
+            if (studyImageSizeFits(selected.bounds, rect)) break;
             // The committed selection can differ from the active drag frame.
             // Read it afresh before a bounded correction; never re-import.
           }
