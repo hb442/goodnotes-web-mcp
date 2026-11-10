@@ -28,7 +28,7 @@ const json = (value) => ({ content: [{ type: 'text', text: JSON.stringify(value)
 export function createServer(adapter, { mode = 'full' } = {}) {
   if (!['full', 'compact'].includes(mode))
     throw new Error('GOODNOTES_MCP_MODE must be full or compact.');
-  const server = new McpServer({ name: 'goodnotes-web-mcp', version: '0.21.0' });
+  const server = new McpServer({ name: 'goodnotes-web-mcp', version: '0.21.1' });
   const queue = new SerialQueue();
   const definitions = new Map();
   const invoke = (fn) => (args, extra) =>

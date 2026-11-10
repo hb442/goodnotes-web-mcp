@@ -2,6 +2,12 @@
 
 0.21.0 is the first public prerelease. Earlier entries describe local development milestones, not previous public releases.
 
+## 0.21.1
+
+- Change current distribution terms to the project-specific Personal Noncommercial License 1.0. Personal use by individuals, private modifications and free sharing under the same terms are permitted; commercial, professional and institutional use requires separate permission.
+- Update package metadata and English/German documentation. Keep third-party dependency licenses and historical MIT rights unchanged. The v0.21.0 tag is not rewritten.
+- No runtime behavior changes; the server version now reports 0.21.1.
+
 ## 0.21.0
 
 - Add verified-copy adoption of explicitly selected native text boxes and images from older boards, including exact text/style/image/crop evidence and whole-copy preservation checks.

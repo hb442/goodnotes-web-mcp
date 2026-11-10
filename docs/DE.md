@@ -2,6 +2,8 @@
 
 Der Helfer läuft in einer eigenen, unsichtbaren Browser-Sitzung. Er steuert weder den Windows-Desktop noch deinen normalen Browser. Ein sichtbares Fenster wird nur für die erste Anmeldung benötigt.
 
+Ab Version 0.21.1 wird das Projekt unter einer eigenen [Lizenz für persönliche, nichtkommerzielle Nutzung](../LICENSE) bereitgestellt. Privatpersonen dürfen es etwa für ihr eigenes Studium verwenden, anpassen und kostenlos unter derselben Lizenz weitergeben. Berufliche, kommerzielle oder institutionelle Nutzung – auch durch Hochschulen oder gemeinnützige Organisationen – benötigt eine gesonderte Erlaubnis. Eine Studentin oder ein Student darf es weiterhin privat für die eigenen Lernunterlagen nutzen. Die frühere MIT-Veröffentlichung v0.21.0 und fremde Abhängigkeiten behalten ihre jeweiligen Rechte. [Details und Beispiele](LICENSING.md).
+
 ## Einrichten
 
 1. Node.js ab Version 22.13 installieren.

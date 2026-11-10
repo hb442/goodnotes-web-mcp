@@ -2,9 +2,9 @@
 
 An experimental, local MCP server for **Goodnotes Web documents, handwriting, text and board objects**. It uses an isolated headless browser and fixed action sequences. It does not capture your desktop or operate your personal browser profile.
 
-Unofficial community project; not affiliated with or endorsed by Goodnotes. The source is MIT licensed. Goodnotes accounts and the calling AI client are separate requirements.
+Unofficial community project; not affiliated with or endorsed by Goodnotes. Current distributions use the [Personal Noncommercial License](LICENSE): personal use by individuals only, including private study. Commercial, professional and institutional use requires separate permission. Goodnotes accounts and the calling AI client are separate requirements.
 
-**Status:** experimental 0.21.0 with 107 actions, locally developed on Windows. Individual tools remain the default; an optional [compact mode](docs/COMPACT.md) exposes three entry tools and loads action schemas on demand. See [validation and limitations](docs/LIMITATIONS.md). Browser reload checks are not proof of synchronization to an iPad.
+**Status:** experimental 0.21.1 with 107 actions, locally developed on Windows. Individual tools remain the default; an optional [compact mode](docs/COMPACT.md) exposes three entry tools and loads action schemas on demand. See [validation and limitations](docs/LIMITATIONS.md). Browser reload checks are not proof of synchronization to an iPad.
 
 [Deutsche Anleitung](docs/DE.md) · [Limitations](docs/LIMITATIONS.md) · [Security](SECURITY.md) · [Development](docs/DEVELOPMENT.md)
 
@@ -209,4 +209,4 @@ npm run package:release
 
 Packaging includes an explicit list of source files, documentation, fixtures, and lockfile. It excludes browser profiles, local previews, credentials, dependencies, and personal document configuration. The package is created locally; nothing is uploaded or published.
 
-MIT licensed. Goodnotes is a trademark of its respective owner.
+Source available for personal, noncommercial use; this is not an OSI-approved open-source license. See [LICENSE](LICENSE) and [licensing examples and release history](docs/LICENSING.md). The historical v0.21.0 release was published under MIT; its existing permissions are unaffected. Third-party dependencies retain their own licenses. Goodnotes is a trademark of its respective owner.

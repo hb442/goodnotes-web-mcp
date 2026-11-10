@@ -1,21 +1,66 @@
-MIT License
+Goodnotes Web MCP Personal Noncommercial License 1.0
 
 Copyright (c) 2026 Goodnotes Web MCP contributors
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Scope and permission
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+These terms cover the project code and documentation supplied under this
+license (the Software). Subject to the conditions below, the copyright
+holders grant natural persons a worldwide, non-exclusive, royalty-free
+permission to use, copy, inspect and modify the Software solely for their
+own personal, noncommercial purposes.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Personal purposes include private study, managing one's own notes, hobbies
+and private experimentation without an intended commercial application.
+A student using the Software for their own studies qualifies. Personal
+self-hosting for one's own use is permitted. Payment for ordinary hosting,
+an AI client or a Goodnotes account does not by itself make such use
+commercial.
+
+2. Excluded uses
+
+This license does not permit use for business, employment, a profession,
+client work, financial gain, or the operations of any organization.
+Companies, sole proprietorships, public bodies, universities, schools,
+charities and other organizations receive no institutional-use permission,
+even where the activity is not for profit. A person's employment or student
+status does not prevent their separate, genuinely personal use.
+
+Selling or commercially licensing the Software, using it in paid services
+or products, monetizing access through advertisements or subscriptions,
+and operating a service for third parties are outside this permission.
+Commercial or institutional use requires separate written permission from
+the relevant copyright holders.
+
+3. Free sharing and modifications
+
+You may share unmodified or modified copies without charge with others
+for their personal, noncommercial use under this same license. Include
+this entire license and all applicable copyright and attribution notices.
+Identify your modifications clearly. Do not remove the personal-use
+restriction or grant recipients broader rights to the covered Software.
+Recipients receive their permission directly under these terms.
+
+These terms do not require you to publish your private modifications.
+They grant no right to use another party's trademarks or imply endorsement.
+
+4. Other rights and earlier releases
+
+Third-party components retain their own licenses. These terms do not
+relicense those components, a user's documents, or Goodnotes itself.
+Rights granted separately, rights in material previously obtained under
+the MIT license, and rights that applicable law does not allow a license
+to restrict are unaffected. In particular, this license does not revoke
+or retroactively narrow permissions in the historical v0.21.0 MIT release.
+
+No permission outside the express grants above is given. A breach ends
+the permissions granted by this license; it does not terminate rights
+independently held under another applicable license or under law.
+
+5. No warranty; limited liability
+
+To the extent permitted by applicable law, the Software is provided as is,
+without any warranty, including warranties of merchantability, fitness for
+a particular purpose or noninfringement. The copyright holders are not
+liable for losses or damages arising from the Software or its use. This
+does not exclude liability or rights that cannot legally be excluded.

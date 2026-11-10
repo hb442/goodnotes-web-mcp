@@ -1,6 +1,6 @@
 {
   "name": "goodnotes-web-mcp",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "Local MCP tools for deliberate, verified edits in Goodnotes Web.",
   "private": true,
   "repository": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/hb442/goodnotes-web-mcp/issues"
   },
   "homepage": "https://github.com/hb442/goodnotes-web-mcp#readme",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "engines": {
     "node": ">=22.13.0"

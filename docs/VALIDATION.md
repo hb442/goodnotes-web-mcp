@@ -1,5 +1,9 @@
 # Validation
 
+## Version 0.21.1 - November 10, 2026
+
+This is a license/documentation/metadata release. The only runtime-source change from v0.21.0 is the reported server version. Syntax, version agreement, full/compact discovery, package formatting and release-archive checks were repeated. The 205-test and copied-document results below remain v0.21.0 functional evidence; this license change does not claim another full live benchmark. Third-party package records are unchanged.
+
 ## Version 0.21.0 - November 10, 2026
 
 Hosted CI is not enabled: the existing publishing credentials lack GitHub workflow permission. The optional Windows/Ubuntu and Node 22/24 matrix is supplied in `docs/github-actions-ci.yml`; the results below are local Windows/Node 24 results.
