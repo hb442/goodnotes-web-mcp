@@ -28,7 +28,8 @@ const pkg = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'
 assert.equal(pkg.version, lock.version);
 assert.equal(pkg.version, lock.packages[''].version);
 const readme = await fs.readFile(path.join(root, 'README.md'), 'utf8'),
-  mentioned = new Set(readme.match(/goodnotes_[a-z_]+/g)),
+  reference = await fs.readFile(path.join(root, 'docs/TOOLS.md'), 'utf8'),
+  mentioned = new Set(reference.match(/goodnotes_[a-z_]+/g)),
   measurements = {};
 for (const mode of ['full', 'compact']) {
   const server = createServer({}, { mode }),
@@ -49,7 +50,7 @@ for (const mode of ['full', 'compact']) {
       assert.deepEqual(
         [...mentioned].filter((n) => !tools.some((t) => t.name === n)),
         [],
-        'README lists a nonexistent tool',
+        'Action reference lists a nonexistent tool',
       );
       assert.ok(
         readme.includes('with ' + tools.length + ' actions'),

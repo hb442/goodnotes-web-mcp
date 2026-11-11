@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="790" viewBox="0 0 1000 790" role="img" aria-labelledby="title desc">
+  <title id="title">From a lecture copy to a learning board</title>
+  <desc id="desc">Illustrative layout using a fictional opportunity-cost lesson. First copy the lecture, review a plan, then build and verify. The board contains a summary, a source-figure example, a practice question and its answer, with fictional page references.</desc>
+  <defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".85" fill="#d9ded2"/></pattern></defs>
+  <rect x="1" y="1" width="998" height="788" rx="20" fill="#f6f6ef" stroke="#dce1d5"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <path d="M50 101h900" stroke="#dce1d5"/>
+    <g font-size="19" font-weight="600" fill="#294639">
+      <circle cx="60" cy="53" r="20" fill="#e0ead5"/><text x="60" y="60" text-anchor="middle">1</text>
+      <text x="92" y="60">Copy the lecture</text>
+      <circle cx="370" cy="53" r="20" fill="#e0ead5"/><text x="370" y="60" text-anchor="middle">2</text>
+      <text x="402" y="60">Review the plan</text>
+      <circle cx="684" cy="53" r="20" fill="#294639"/><text x="684" y="60" text-anchor="middle" fill="#f7faf2">3</text>
+      <text x="716" y="60">Build &amp; verify</text>
+    </g>
+    <g fill="none" stroke="#8da086" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M293 53h28m-7-6 7 6-7 6M608 53h28m-7-6 7 6-7 6"/></g>
+    <rect x="24" y="118" width="952" height="647" rx="12" fill="url(#dots)"/>
+    <text x="48" y="149" fill="#667961" font-size="13" font-weight="700" letter-spacing="2.5">LEARNING BOARD / FICTIONAL EXAMPLE</text>
+    <text x="46" y="199" fill="#213d30" font-size="39" font-weight="650" letter-spacing="-1">Opportunity cost</text>
+    <text x="48" y="227" fill="#697965" font-size="17">One idea. A concrete example. A question to test yourself.</text>
+    <g>
+      <rect x="48" y="254" width="442" height="204" rx="13" fill="#e6efdb" stroke="#d3dfc8"/>
+      <text x="70" y="286" fill="#4c6a43" font-size="13" font-weight="700" letter-spacing="1.4">01 / THE IDEA</text>
+      <text x="70" y="325" fill="#294639" font-size="22" font-weight="600">The best alternative you give up.</text>
+      <text x="70" y="363" fill="#52674c" font-size="18">Choosing one option means forgoing</text>
+      <text x="70" y="390" fill="#52674c" font-size="18">something else you could have done.</text>
+      <text x="70" y="433" fill="#66815b" font-size="14">Example lecture · p. 2</text>
+    </g>
+    <g>
+      <rect x="510" y="254" width="442" height="204" rx="13" fill="#fffefa" stroke="#dce1d5"/>
+      <text x="532" y="286" fill="#64735b" font-size="13" font-weight="700" letter-spacing="1.4">02 / SOURCE-FIGURE EXAMPLE</text>
+      <rect x="643" y="305" width="176" height="37" rx="18.5" fill="#eef0e6"/>
+      <text x="731" y="330" text-anchor="middle" fill="#435b3d" font-size="18" font-weight="600">One available hour</text>
+      <path d="M731 343v15M630 371v-13h202v13" fill="none" stroke="#93a488" stroke-width="2"/>
+      <rect x="551" y="371" width="158" height="37" rx="8" fill="#e6efdb"/>
+      <text x="630" y="396" text-anchor="middle" fill="#42633c" font-size="18">Study</text>
+      <rect x="753" y="371" width="158" height="37" rx="8" fill="#f5e4d0"/>
+      <text x="832" y="396" text-anchor="middle" fill="#825631" font-size="18">Paid work</text>
+      <text x="532" y="433" fill="#74816c" font-size="14">Example figure · p. 3</text>
+    </g>
+    <g>
+      <rect x="48" y="478" width="442" height="224" rx="13" fill="#f5e6d5" stroke="#e7d4bd"/>
+      <text x="70" y="511" fill="#906333" font-size="13" font-weight="700" letter-spacing="1.4">03 / TRY IT YOURSELF</text>
+      <text x="70" y="549" fill="#65482c" font-size="21" font-weight="600">Study for an hour, or earn €15.</text>
+      <text x="70" y="589" fill="#7b5d3b" font-size="19">What is the opportunity cost</text>
+      <text x="70" y="617" fill="#7b5d3b" font-size="19">of choosing to study?</text>
+      <text x="70" y="674" fill="#99734a" font-size="14">Answer first, then check the explanation.</text>
+    </g>
+    <g>
+      <rect x="510" y="478" width="442" height="224" rx="13" fill="#e6edef" stroke="#d3dfe2"/>
+      <text x="532" y="511" fill="#4c6e74" font-size="13" font-weight="700" letter-spacing="1.4">04 / CHECK YOUR REASONING</text>
+      <text x="532" y="549" fill="#2e535d" font-size="24" font-weight="650">€15 in forgone earnings.</text>
+      <text x="532" y="589" fill="#526f76" font-size="18">In this simplified example, paid work</text>
+      <text x="532" y="617" fill="#526f76" font-size="18">is the best alternative you give up.</text>
+      <text x="532" y="674" fill="#6a848a" font-size="14">Example lecture · p. 4</text>
+    </g>
+    <g font-size="14" fill="#6d7d64">
+      <circle cx="56" cy="741" r="5" fill="#789a67"/><text x="70" y="746">Editable text cards</text>
+      <circle cx="283" cy="741" r="5" fill="#a48156"/><text x="297" y="746">Source figures</text>
+      <circle cx="486" cy="741" r="5" fill="#678d95"/><text x="500" y="746">Page references</text>
+      <text x="951" y="746" text-anchor="end" fill="#87917e">Illustration, not a screenshot</text>
+    </g>
+  </g>
+</svg>

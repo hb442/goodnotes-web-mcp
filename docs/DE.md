@@ -1,8 +1,32 @@
-# Goodnotes über einen lokalen MCP bearbeiten
+<p align="center">
+  <img src="assets/hero.svg" alt="Goodnotes Web MCP – Notizen lesen, ordnen und Lernboards erstellen." width="1000">
+</p>
+
+<p align="center"><a href="../README.md">English</a> · <a href="#einrichten">Einrichten</a> · <a href="https://github.com/hb442/goodnotes-web-mcp/releases">Download</a> · <a href="TOOLS.md">Alle Aktionen</a></p>
+
+# Deine Goodnotes. Mit einem Assistenten.
+
+Eine Stelle wiederfinden, Notizbücher ordnen oder aus einer Vorlesung ein Lernboard erstellen: **Goodnotes Web MCP verbindet einen kompatiblen KI-Assistenten mit deinen Dokumenten in Goodnotes Web.**
 
 Der Helfer läuft in einer eigenen, unsichtbaren Browser-Sitzung. Er steuert weder den Windows-Desktop noch deinen normalen Browser. Ein sichtbares Fenster wird nur für die erste Anmeldung benötigt.
 
-Ab Version 0.21.1 wird das Projekt unter einer eigenen [Lizenz für persönliche, nichtkommerzielle Nutzung](../LICENSE) bereitgestellt. Privatpersonen dürfen es etwa für ihr eigenes Studium verwenden, anpassen und kostenlos unter derselben Lizenz weitergeben. Berufliche, kommerzielle oder institutionelle Nutzung – auch durch Hochschulen oder gemeinnützige Organisationen – benötigt eine gesonderte Erlaubnis. Eine Studentin oder ein Student darf es weiterhin privat für die eigenen Lernunterlagen nutzen. Die frühere MIT-Veröffentlichung v0.21.0 und fremde Abhängigkeiten behalten ihre jeweiligen Rechte. [Details und Beispiele](LICENSING.md).
+**Experimentelles, unabhängiges Community-Projekt.** Keine offizielle Verbindung zu Goodnotes. Ab Version 0.21.1 gilt die [Lizenz für persönliche, nichtkommerzielle Nutzung](../LICENSE). Das eigene Studium, private Anpassungen und kostenlose Weitergabe unter denselben Bedingungen sind erlaubt. Berufliche, kommerzielle und institutionelle Nutzung benötigen eine gesonderte Erlaubnis. Die frühere MIT-Version und fremde Abhängigkeiten behalten ihre jeweiligen Rechte. [Details und Beispiele](LICENSING.md).
+
+## Von der Vorlesung zum Lernboard
+
+<p align="center">
+  <img src="assets/study-workflow.svg" alt="Schematisches Lernboard mit einer Zusammenfassung, einer Beispielgrafik, einer Übungsfrage und einer Lösung mit Seitenbezügen." width="1000">
+</p>
+
+*Die Grafik zeigt ein erfundenes Lehrbeispiel, keinen Goodnotes-Screenshot. Für deine eigenen Boards können Originalabbildungen aus deinen Folien verwendet werden.*
+
+1. **Quelle kopieren:** Die Vorlesung als separate Kopie vorbereiten und auslesen.
+2. **Inhalt und Layout planen:** Der Assistent formuliert Zusammenfassung, Fragen und Seitenbezüge. Der MCP berechnet die Anordnung und erstellt eine Vorschau.
+3. **Umsetzen und prüfen:** Bearbeitbare Textkarten und Bilder anlegen, Fortschritt speichern und Änderungen nach Neuladen kontrollieren.
+
+> „Erstelle auf Basis einer Kopie dieser Vorlesung ein übersichtliches Lernboard mit Originalgrafiken, Seitenbezügen und fünf Übungsfragen. Zeige zuerst den Plan.“
+
+[Lernboards erstellen](STUDY-BOARDS.md) · [Einzelne Karten überarbeiten](STUDY-REVISIONS.md) · [Mehrere Boards verknüpfen](STUDY-COLLECTIONS.md)
 
 ## Einrichten
 
@@ -26,7 +50,12 @@ Google kann die Anmeldung aus automatisch gesteuerten Browsern ablehnen. Deshalb
 
 ## Was funktioniert – und was noch offen ist
 
-Version 0.21 bietet 107 Aktionen. Der optionale [kompakte Modus](COMPACT.md) stellt nur drei Einstiegswerkzeuge bereit und lädt die genaue Beschreibung einer Aktion bei Bedarf. Neben Dokumentverwaltung, Export, Texterkennung und bisherigen Board-Änderungen sind diese Abläufe möglich:
+Version 0.21.1 bietet 107 Aktionen. Der optionale [kompakte Modus](COMPACT.md) stellt nur drei Einstiegswerkzeuge bereit und lädt die genaue Beschreibung einer Aktion bei Bedarf. Die englische [Aktionsreferenz](TOOLS.md) enthält alle Werkzeugnamen und ihre Aufgaben.
+
+<details>
+<summary><strong>Alle Funktionen, Abläufe und Grenzen ansehen</strong></summary>
+
+Neben Dokumentverwaltung, Export, Texterkennung und bisherigen Board-Änderungen sind diese Abläufe möglich:
 
 - **Vorlesung zum Lernboard:** `goodnotes_prepare_study_board` legt eine Quellkopie an und exportiert sie. Die aufrufende KI liest die Vorlesung und liefert Zusammenfassung, Übungen, Lösungen und Seitenbezüge. `goodnotes_plan_study_board` schneidet Originalgrafiken aus, prüft Textlängen und Abstände und erstellt eine lokale Vorschau. `goodnotes_run_study_board` setzt den geprüften Plan schrittweise als bearbeitbare Textkarten und Bilder um. Fortschritt und Zeiten bleiben gespeichert; unklare Änderungen werden nicht automatisch wiederholt. Siehe [Ablauf und Grenzen](STUDY-BOARDS.md).
 
@@ -74,6 +103,10 @@ Für größere Lernboards zuerst das Endergebnis festlegen: Texte, Positionen, �
 
 PDFs, Textindizes, Auftragspläne und Belegbilder bleiben im privaten Datenordner. Exportierte Inhalte sind Momentaufnahmen; für aktuelle Inhalte neu exportieren oder `refresh` verwenden. Die lokale Texterkennung lädt keine Seiten zu einem zusätzlichen Dienst hoch. Beim ausdrücklich angeforderten PDF- oder Bildimport wird die gewählte Datei zu Goodnotes hochgeladen. Angeforderte Ergebnisse gehen weiterhin an den verwendeten MCP-Client.
 
+</details>
+
+Der MCP hängt von der Goodnotes-Weboberfläche ab. Nicht jede App-Funktion ist verfügbar, und ein erfolgreicher Web-Test bestätigt keine iPad-Synchronisierung. [Grenzen](LIMITATIONS.md) · [Prüfstand und gemessene Zeiten](VALIDATION.md).
+
 ## Beispiel für einen Auftrag an den Assistenten
 
 > Öffne meine freigegebene Testkopie. Zeige einmal die Vorschau und lies das Textfeld, das ich ändern möchte. Ersetze nur dieses Feld durch den vereinbarten Text. Bestätige den Inhalt nach Neuladen. Bei einem unklaren Speicherergebnis nicht automatisch erneut schreiben.
@@ -97,4 +130,4 @@ Danach den MCP-Server neu starten. Zum vollständigen Trennen den Eintrag aus de
 | `TEXT_CONFLICT` | Der Inhalt hat sich seit dem Lesen geändert; es wurde kein Ersatztext gesendet. |
 | `INPUT_MISMATCH` / `SAVE_UNVERIFIED` | Eine Änderung kann erfolgt sein, wurde aber nicht vollständig bestätigt. Dokument ansehen und Vorgangsstatus abfragen. |
 
-Das Projekt wird lokal entwickelt. Ein GitHub-Upload und eine öffentliche Veröffentlichung sind separate Schritte.
+Die aktuelle Veröffentlichung und Downloads stehen unter [GitHub Releases](https://github.com/hb442/goodnotes-web-mcp/releases). Für die Einrichtung und erste Bearbeitung gibt es außerdem die ausführliche englische [Schritt-für-Schritt-Anleitung](SETUP.md).
