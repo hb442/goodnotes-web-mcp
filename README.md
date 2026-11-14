@@ -10,7 +10,7 @@
   <a href="https://github.com/hb442/goodnotes-web-mcp/issues">Report an issue</a>
 </p>
 
-# Your Goodnotes, with an assistant
+# Goodnotes MCP Server — Your Goodnotes, with an assistant
 
 Find a passage, organize your notebooks, revise a card, or turn a lecture into a learning board with source images and practice questions. **Goodnotes Web MCP connects a compatible AI assistant to your Goodnotes Web library** through a separate local browser session.
 
